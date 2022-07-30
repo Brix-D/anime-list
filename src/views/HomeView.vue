@@ -2,18 +2,26 @@
 import { onMounted, reactive, ref, watch } from 'vue';
 import useSearch from '@/composables/useSearch';
 import useThrottlingRequest from '@/composables/useThrottlingRequest';
+import { useRoute, useRouter } from 'vue-router';
 
 const list = ref({});
 const searchName = ref('');
+const route = useRoute();
+const router = useRouter();
 
 const { search, loading, errorSearch } = useSearch();
 const { throttleRequest } = useThrottlingRequest();
 
 const onSearchAnime = async () => {
-  list.value = await search(searchName.value);
+  const { name: querySearch = '' } = route.query;
+  list.value = await search(querySearch as string);
+
 };
 
-watch(searchName, () => throttleRequest(onSearchAnime));
+watch(searchName, () => {
+  throttleRequest(onSearchAnime);
+  router.replace({ query: { ...route.query, name: searchName.value } });
+});
 
 onMounted(async () => {
   await onSearchAnime();
