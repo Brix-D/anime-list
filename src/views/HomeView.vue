@@ -1,17 +1,13 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, watch } from 'vue';
 import useSearch from '@/composables/useSearch';
+import useThrottlingRequest from '@/composables/useThrottlingRequest';
 
 const list = ref({});
 const searchName = ref('');
-const throttlingRequestId = ref(0);
-const TIMEOUT_REQUEST = 600;
 
-function throttleRequest(request: CallableFunction) {
-  clearTimeout(throttlingRequestId.value);
-  throttlingRequestId.value = setTimeout(request, TIMEOUT_REQUEST);
-}
 const { search, loading, errorSearch } = useSearch();
+const { throttleRequest } = useThrottlingRequest();
 
 const onSearchAnime = async () => {
   list.value = await search(searchName.value);
