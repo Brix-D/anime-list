@@ -14,7 +14,7 @@ module.exports = {
       'warn',
       {
         singleQuote: true,
-        trailingComma: 'none'
+        trailingComma: 'all'
       }
     ]
   }
