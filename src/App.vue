@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import useDarkTheme from '@/composables/useDarkTheme';
-const { getTheme, getUserPreference, setTheme, userTheme, toggleTheme } = useDarkTheme();
+const { getTheme, getUserPreference, setTheme, userTheme, toggleTheme } =
+  useDarkTheme();
 
 onMounted(() => {
   const initUserTheme = getTheme() || getUserPreference();
@@ -10,17 +11,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="dark:bg-neutral-900 dark:text-blue-50 px-4">
+  <div class="dark:bg-night dark:text-air px-4 min-h-screen">
     <header>
       <div>
         <nav></nav>
-        <h2 class="dark:text-blue-50 text-black">
-          Current Theme {{ userTheme }}
-        </h2>
+        <!--        class="dark:text-cream text-asphalt"-->
+        <h2>Current Theme {{ userTheme }}</h2>
         <button @click="toggleTheme">Change Theme</button>
       </div>
     </header>
-    <main class="max-w-screen-2xl mx-auto dark:bg-gray-800">
+    <!--    bg-cream dark:bg-asphalt-->
+    <main class="max-w-screen-2xl mx-auto">
       <RouterView />
     </main>
   </div>
