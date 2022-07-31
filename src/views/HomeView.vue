@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, watch } from 'vue';
+import USwitch from '@/components/ui/USwitch.vue';
 import useSearch from '@/composables/useSearch';
 import useThrottlingRequest from '@/composables/useThrottlingRequest';
+import useDarkTheme from '@/composables/useDarkTheme';
 import { useRoute, useRouter } from 'vue-router';
 
 const list = ref({});
 const searchName = ref('');
+
 const route = useRoute();
 const router = useRouter();
 
 const { search, loading, errorSearch } = useSearch();
 const { throttleRequest } = useThrottlingRequest();
+const { isDark, toggleTheme } = useDarkTheme();
 
 const onSearchAnime = async () => {
   const { name: querySearch = '' } = route.query;
@@ -30,6 +34,14 @@ onMounted(async () => {
 
 <template>
   <div>
+    <div class="m-10">
+      <USwitch
+        :value="isDark"
+        @input="toggleTheme"
+        class="text-asphalt dark:text-air"
+        label="test"
+      />
+    </div>
     <label for="searchbar">Find an anime:</label>
     <input type="text" v-model="searchName" id="searchbar" />
     <button @click="onSearchAnime">Go!</button>

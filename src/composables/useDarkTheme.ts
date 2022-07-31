@@ -1,9 +1,14 @@
-import { ref } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 export function useDarkTheme() {
   const userTheme = ref('light');
+  const isDark = computed(() => userTheme.value === 'dark');
 
-  function getTheme() {
+  onMounted(() => {
+    userTheme.value = getTheme() || getUserPreference();
+  });
+
+  function getTheme(): string | null {
     return localStorage.getItem('user-theme');
   }
   function setTheme(theme: string): void {
@@ -30,7 +35,14 @@ export function useDarkTheme() {
     }
   }
 
-  return { userTheme, getTheme, setTheme, toggleTheme, getUserPreference };
+  return {
+    userTheme,
+    isDark,
+    getTheme,
+    setTheme,
+    toggleTheme,
+    getUserPreference,
+  };
 }
 
 export default useDarkTheme;

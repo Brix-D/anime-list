@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import useDarkTheme from '@/composables/useDarkTheme';
-const { getTheme, getUserPreference, setTheme, userTheme, toggleTheme } =
-  useDarkTheme();
+const { setTheme, userTheme } = useDarkTheme();
 
 onMounted(() => {
-  const initUserTheme = getTheme() || getUserPreference();
-  setTheme(initUserTheme);
+  setTheme(userTheme.value);
 });
 </script>
 
@@ -16,8 +14,8 @@ onMounted(() => {
       <div>
         <nav></nav>
         <!--        class="dark:text-cream text-asphalt"-->
-        <h2>Current Theme {{ userTheme }}</h2>
-        <button @click="toggleTheme">Change Theme</button>
+<!--        <h2>Current Theme {{ userTheme }}</h2>-->
+<!--        <button @click="toggleTheme">Change Theme</button>-->
       </div>
     </header>
     <!--    bg-cream dark:bg-asphalt-->
