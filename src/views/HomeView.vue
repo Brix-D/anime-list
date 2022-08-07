@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref, watch } from 'vue';
+import { defineAsyncComponent, onMounted, reactive, ref, watch } from 'vue';
 import useSearch from '@/composables/useSearch';
 import useThrottlingRequest from '@/composables/useThrottlingRequest';
 import { useRoute, useRouter } from 'vue-router';
+const TheCatalog = defineAsyncComponent(
+  () => import('@/components/blocks/TheCatalog.vue'),
+);
 
 const list = ref({});
 const searchName = ref('');
@@ -40,7 +43,7 @@ onMounted(async () => {
           {{ errorSearch.message }}
         </div>
         <div v-else>
-          <pre>{{ list.data }}</pre>
+          <TheCatalog :items="list.data" />
         </div>
       </div>
     </div>

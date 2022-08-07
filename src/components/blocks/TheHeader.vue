@@ -8,7 +8,7 @@
           @input="toggleTheme"
           color="text-asphalt dark:text-air"
           colorful
-          label="Theme"
+          label="Dark theme"
           left
         />
       </div>
