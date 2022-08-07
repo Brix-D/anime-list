@@ -1,7 +1,6 @@
 <template>
-  <div class="">
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-6">
     <div v-for="card in props.items" :key="card.mal_id">
-      <!--      <pre>{{ card }}</pre>-->
       <AnimeCard v-bind="card" />
     </div>
   </div>

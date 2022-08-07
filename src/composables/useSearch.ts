@@ -22,7 +22,6 @@ export function useSearch() {
     } catch (error: any) {
       errorSearch.value = error.response.data;
     }
-    console.log(anime.value);
     loading.value = false;
     return anime.value;
   }

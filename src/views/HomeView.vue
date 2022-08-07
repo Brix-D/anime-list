@@ -43,7 +43,7 @@ onMounted(async () => {
           {{ errorSearch.message }}
         </div>
         <div v-else>
-          <TheCatalog :items="list.data" />
+          <TheCatalog :items="list.data" class="my-4" />
         </div>
       </div>
     </div>
