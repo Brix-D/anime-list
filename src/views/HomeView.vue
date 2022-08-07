@@ -19,7 +19,6 @@ const { isDark, toggleTheme } = useDarkTheme();
 const onSearchAnime = async () => {
   const { name: querySearch = '' } = route.query;
   list.value = await search(querySearch as string);
-
 };
 
 watch(searchName, () => {
@@ -38,7 +37,8 @@ onMounted(async () => {
       <USwitch
         :value="isDark"
         @input="toggleTheme"
-        class="text-asphalt dark:text-air"
+        color="text-asphalt dark:text-air"
+        colorful
         label="test"
       />
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="switch">
+  <div class="switch" :class="classes">
     <div class="switch__selection">
       <input
         type="checkbox"
@@ -8,10 +8,9 @@
         v-model="checked"
       />
       <div class="switch__selection-ripple"></div>
-      <div class="switch__track" ></div>
+      <div class="switch__track"></div>
       <div
         class="switch__thumb"
-
         :class="[{ 'switch--checked': checked }]"
       ></div>
     </div>
@@ -30,6 +29,18 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  color: {
+    type: String,
+    default: 'dark:text-white text-black',
+  },
+  // inactiveColor: {
+  //   type: String,
+  //   default: 'dark:text-white text-black',
+  // },
+  colorful: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits(['input']);
@@ -39,6 +50,13 @@ const checked = computed({
   set: (value) => {
     emit('input', value);
   },
+});
+const classes = computed(() => {
+  return {
+    [props.color]: props.value || props.colorful,
+    'switch--active': props.value,
+    'switch--colorful': props.colorful,
+  };
 });
 </script>
 
@@ -97,7 +115,6 @@ const checked = computed({
 }
 .switch__track,
 .switch__thumb {
-  @apply bg-current;
   @apply pointer-events-none;
   transition: inherit;
 }
@@ -106,5 +123,21 @@ const checked = computed({
   @apply flex-auto;
   @apply items-center;
   @apply h-auto;
+  @apply cursor-pointer;
+}
+.switch:not(.switch--active):not(.switch--colorful) >>> .switch__track {
+  @apply bg-black/[.38];
+}
+.switch:not(.switch--active):not(.switch--colorful) >>> .switch__thumb {
+  @apply bg-white;
+}
+
+.switch--active >>> .switch__track,
+.switch--active >>> .switch__thumb {
+  @apply bg-current;
+}
+.switch--colorful >>> .switch__track,
+.switch--colorful >>> .switch__thumb {
+  @apply bg-current;
 }
 </style>
