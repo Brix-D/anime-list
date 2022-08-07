@@ -20,28 +20,33 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-const props = defineProps({
-  value: {
-    type: Boolean,
-    required: true,
-  },
-  label: {
-    type: String,
-    default: '',
-  },
-  color: {
-    type: String,
-    default: 'dark:text-white text-black',
-  },
-  // inactiveColor: {
-  //   type: String,
-  //   default: 'dark:text-white text-black',
-  // },
-  colorful: {
-    type: Boolean,
-    default: false,
-  },
-});
+interface Props {
+  value: boolean;
+  label?: string;
+  color?: string;
+  colorful?: boolean;
+}
+
+// const props = defineProps({
+//   value: {
+//     type: Boolean,
+//     required: true,
+//   },
+//   label: {
+//     type: String,
+//     default: '',
+//   },
+//   color: {
+//     type: String,
+//     default: 'dark:text-white text-black',
+//   },
+//   colorful: {
+//     type: Boolean,
+//     default: false,
+//   },
+// });
+
+const props = defineProps<Props>();
 
 const emit = defineEmits(['input']);
 
@@ -53,7 +58,7 @@ const checked = computed({
 });
 const classes = computed(() => {
   return {
-    [props.color]: props.value || props.colorful,
+    [props.color as string]: props.value || props.colorful,
     'switch--active': props.value,
     'switch--colorful': props.colorful,
   };
