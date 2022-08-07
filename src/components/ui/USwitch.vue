@@ -1,20 +1,22 @@
 <template>
   <div class="switch" :class="classes">
-    <div class="switch__selection">
-      <input
-        type="checkbox"
-        id="test"
-        class="switch__input"
-        v-model="checked"
-      />
-      <div class="switch__selection-ripple"></div>
-      <div class="switch__track"></div>
-      <div
-        class="switch__thumb"
-        :class="[{ 'switch--checked': checked }]"
-      ></div>
+    <div class="switch__wrapper">
+      <div class="switch__selection">
+        <input
+          type="checkbox"
+          id="test"
+          class="switch__input"
+          v-model="checked"
+        />
+        <div class="switch__selection-ripple"></div>
+        <div class="switch__track"></div>
+        <div
+          class="switch__thumb"
+          :class="[{ 'switch--checked': checked }]"
+        ></div>
+      </div>
     </div>
-    <label for="test" class="switch__label">{{ label }}</label>
+    <label v-if="label" for="test" class="switch__label">{{ label }}</label>
   </div>
 </template>
 <script setup lang="ts">
@@ -25,6 +27,7 @@ interface Props {
   label?: string;
   color?: string;
   colorful?: boolean;
+  left?: boolean;
 }
 
 // const props = defineProps({
@@ -61,6 +64,7 @@ const classes = computed(() => {
     [props.color as string]: props.value || props.colorful,
     'switch--active': props.value,
     'switch--colorful': props.colorful,
+    'flex-row-reverse': props.left,
   };
 });
 </script>
@@ -73,6 +77,13 @@ const classes = computed(() => {
   @apply w-min;
   @apply relative;
   @apply transition-all;
+  @apply gap-x-3;
+}
+.switch__wrapper {
+  @apply flex;
+  @apply relative;
+  @apply pl-1;
+  @apply -mr-1;
 }
 .switch__selection {
   @apply inline-flex;
@@ -84,7 +95,6 @@ const classes = computed(() => {
   @apply select-none;
   color: inherit;
   @apply transition-transform;
-  @apply mr-2;
 }
 .switch__input {
   @apply absolute;
