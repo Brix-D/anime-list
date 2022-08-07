@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, defineAsyncComponent } from 'vue';
+
+const TheHeader = defineAsyncComponent(
+  () => import('@/components/blocks/TheHeader.vue'),
+);
 import useDarkTheme from '@/composables/useDarkTheme';
 const { setTheme, userTheme } = useDarkTheme();
 
@@ -9,17 +13,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="dark:bg-night dark:text-air px-4 min-h-screen">
-    <header>
-      <div>
-        <nav></nav>
-        <!--        class="dark:text-cream text-asphalt"-->
-<!--        <h2>Current Theme {{ userTheme }}</h2>-->
-<!--        <button @click="toggleTheme">Change Theme</button>-->
-      </div>
-    </header>
+  <div class="dark:bg-night dark:text-air min-h-screen">
+    <div class="bg-cream dark:bg-asphalt">
+      <TheHeader class="max-w-screen-2xl mx-auto px-4" />
+    </div>
     <!--    bg-cream dark:bg-asphalt-->
-    <main class="max-w-screen-2xl mx-auto">
+    <main class="max-w-screen-2xl mx-auto px-4">
       <RouterView />
     </main>
   </div>
