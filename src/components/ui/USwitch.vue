@@ -16,7 +16,9 @@
         ></div>
       </div>
     </div>
-    <label v-if="label" for="test" class="switch__label">{{ label }}</label>
+    <label v-if="props.label" for="test" class="switch__label">
+      {{ props.label }}
+    </label>
   </div>
 </template>
 <script setup lang="ts">
@@ -74,7 +76,7 @@ const classes = computed(() => {
   @apply cursor-pointer;
   @apply flex;
   @apply items-center;
-  @apply w-min;
+  @apply w-fit;
   @apply relative;
   @apply transition-all;
   @apply gap-x-3;
@@ -140,19 +142,19 @@ const classes = computed(() => {
   @apply h-auto;
   @apply cursor-pointer;
 }
-.switch:not(.switch--active):not(.switch--colorful) >>> .switch__track {
+.switch:not(.switch--active):not(.switch--colorful):deep(.switch__track) {
   @apply bg-black/[.38];
 }
-.switch:not(.switch--active):not(.switch--colorful) >>> .switch__thumb {
+.switch:not(.switch--active):not(.switch--colorful):deep(.switch__thumb) {
   @apply bg-white;
 }
 
-.switch--active >>> .switch__track,
-.switch--active >>> .switch__thumb {
+.switch--active:deep(.switch__track),
+.switch--active:deep(.switch__thumb) {
   @apply bg-current;
 }
-.switch--colorful >>> .switch__track,
-.switch--colorful >>> .switch__thumb {
+.switch--colorful:deep(.switch__track),
+.switch--colorful:deep(.switch__thumb) {
   @apply bg-current;
 }
 </style>
