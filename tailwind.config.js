@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       boxShadow: {
         'md-all': '0 0 8px 4px var(--tw-shadow-color)',
+        'md-all-light': '0 0 8px 2px var(--tw-shadow-color)',
       },
       colors: {
         transparent: 'transparent',

@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-2 xl:grid-cols-6 gap-6">
+  <div class="grid grid-cols-2 xl:grid-cols-6 xl:gap-6 gap-4">
     <div v-for="card in props.items" :key="card.mal_id" class="flex">
       <AnimeCard v-bind="card" class="flex-grow" />
     </div>

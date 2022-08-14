@@ -7,6 +7,8 @@ export interface Anime {
   background?: string;
   genres?: Array<object>;
   images: AnimeImages;
+  year?: number;
+  url: string;
 }
 
 export interface AnimeImages {
