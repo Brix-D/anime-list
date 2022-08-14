@@ -6,7 +6,12 @@ export interface Anime {
   synopsis: string;
   background?: string;
   genres?: Array<object>;
-  image: string;
+  images: AnimeImages;
+}
+
+export interface AnimeImages {
+  webp?: string;
+  jpg?: string;
 }
 
 export default Anime;

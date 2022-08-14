@@ -3,10 +3,11 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   darkMode: 'class',
-  mode: 'jit',
-  purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
   theme: {
     extend: {
+      boxShadow: {
+        'md-all': '0 0 8px 4px var(--tw-shadow-color)',
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',

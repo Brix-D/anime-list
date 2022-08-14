@@ -17,7 +17,10 @@ export function useSearch() {
       const { data: response } = await axios.get(`/anime?q=${query}`);
       anime.value.data = response.data.map((item: any) => ({
         ...item,
-        image: item.images?.webp?.image_url,
+        images: {
+          webp: item.images?.webp?.image_url,
+          jpg: item.images?.jpg?.image_url,
+        },
       }));
     } catch (error: any) {
       errorSearch.value = error.response.data;
