@@ -1,16 +1,15 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "target": "esnext",
+    "module": "esnext",
+    // использование более строгого вывода типов для свойств данных в `this`
+    "strict": false,
+    "jsx": "preserve",
+    "moduleResolution": "node",
   },
-
-  "references": [
-    {
-      "path": "./tsconfig.config.json"
-    }
-  ]
 }

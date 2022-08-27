@@ -42,24 +42,26 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import AnimeGenre from '@/components/types/AnimeGenre';
+import { AnimeImages } from '@/components/types/Anime';
 
 interface Anime {
   mal_id: number;
   title: string;
-  episodes?: number;
+  episodes: number;
   status: string;
   synopsis: string;
   background?: string;
-  genres?: Array<object>;
+  genres?: Array<AnimeGenre>;
   images: AnimeImages;
   year?: number;
   url: string;
 }
+// Баги самого вуя
+// import Anime from '@/components/types/Anime';
 
-interface AnimeImages {
-  webp?: string;
-  jpg?: string;
-}
+//interface Props extends Omit<Anime, ''> {}
+// type Props = Omit<Anime, ''>;
 
 const props = defineProps<Anime>();
 

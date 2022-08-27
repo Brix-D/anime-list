@@ -1,3 +1,5 @@
+import type AnimeGenre from '@/components/types/AnimeGenre';
+
 export interface Anime {
   mal_id: number;
   title: string;
@@ -5,7 +7,7 @@ export interface Anime {
   status: string;
   synopsis: string;
   background?: string;
-  genres?: Array<object>;
+  genres?: Array<AnimeGenre>;
   images: AnimeImages;
   year?: number;
   url: string;

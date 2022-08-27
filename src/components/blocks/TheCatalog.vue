@@ -12,8 +12,11 @@ import type Anime from '@/components/types/Anime';
 const AnimeCard = defineAsyncComponent(
   () => import('@/components/blocks/AnimeCard.vue'),
 );
+interface ItemType extends Anime {
+  [key: string]: any;
+}
 interface Props {
-  items: Array<Anime>;
+  items: Array<ItemType>;
 }
 const props = defineProps<Props>();
 </script>

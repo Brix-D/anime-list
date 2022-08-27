@@ -1,17 +1,13 @@
 import { reactive, ref } from 'vue';
 ///const axios: AxiosInstance = inject('axios') as AxiosInstance;
 import axios from '@/plugins/axios';
-import type { Anime } from '@/components/types/Anime';
-interface Response {
-  data: Array<Anime>;
-  pagination: object;
-}
+import type { SearchResponse } from '@/components/types/api/search';
 export function useSearch() {
   const loading = ref(true);
-  const errorSearch = ref({});
+  const errorSearch = ref({} as any);
 
   async function search(query: string) {
-    const anime = ref({} as Response);
+    const anime = ref({} as SearchResponse);
     loading.value = true;
     try {
       const { data: response } = await axios.get(`/anime?q=${query}`);
