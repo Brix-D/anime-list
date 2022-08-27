@@ -21,7 +21,7 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
-    extensions: ['.ts', '.js', '.vue'],
+    extensions: ['.vue', '.ts', '.js'],
   },
   plugins: [
     new Dotenv(),
