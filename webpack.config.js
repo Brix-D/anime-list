@@ -12,8 +12,9 @@ module.exports = {
   context: path.resolve(__dirname),
   entry: './src/main.ts',
   output: {
-    filename: 'main.js',
+    filename: 'assets/js/[name].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     clean: true,
   },
   resolve: {
@@ -29,7 +30,17 @@ module.exports = {
       template: path.resolve(__dirname, 'public', 'index.html'),
     }),
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'assets/css/[name].css',
+    }),
+    new webpack.ProgressPlugin({
+      activeModules: false,
+      entries: true,
+      modules: true,
+      modulesCount: 5000,
+      profile: false,
+      percentBy: 'modules',
+    }),
   ],
   module: {
     rules: [
@@ -74,5 +85,21 @@ module.exports = {
     },
     compress: true,
     port: process.env.PORT,
+    hot: true,
+  },
+  optimization: {
+    chunkIds: 'named',
+    moduleIds: 'named',
+    minimize: true,
+  },
+  performance: {
+    maxAssetSize: 1000000,
+    maxEntrypointSize: 1000000,
+    hints: 'warning',
+  },
+  stats: {
+    preset: 'minimal',
+    moduleTrace: true,
+    errorDetails: true,
   },
 };
