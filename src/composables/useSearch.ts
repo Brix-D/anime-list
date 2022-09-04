@@ -5,7 +5,7 @@ import type { SearchResponse } from '@/components/types/api/search';
 
 export function useSearch() {
   const loading = ref(true);
-  const errorSearch = ref({});
+  const errorSearch = ref({} as any);
 
   async function search(query: string) {
     const anime = ref({} as SearchResponse);
