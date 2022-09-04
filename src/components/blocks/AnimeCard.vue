@@ -43,6 +43,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type AnimeGenre from "@/components/types/AnimeGenre";
+import type { AnimeImages } from '@/components/types/Anime';
 
 interface Anime {
   mal_id: number;
@@ -57,16 +58,12 @@ interface Anime {
   url: string;
 }
 
-interface AnimeImages {
-  webp?: string;
-  jpg?: string;
-}
 
 const props = defineProps<Anime>();
 
 const LIMIT_SHOW_GENRES = 2;
 
-const limitedGenres = computed(() => props.genres?.slice(0, LIMIT_SHOW_GENRES));
+const limitedGenres = computed(() => props.genres?.slice(0, LIMIT_SHOW_GENRES) ?? []);
 </script>
 
 <style scoped>
