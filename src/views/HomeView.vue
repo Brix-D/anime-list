@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineAsyncComponent, onMounted, reactive, ref, watch } from 'vue';
+import type { SearchResponse } from '@/components/types/api/search';
 import useSearch from '@/composables/useSearch';
 import useThrottlingRequest from '@/composables/useThrottlingRequest';
 import { useRoute, useRouter } from 'vue-router';
@@ -7,7 +8,7 @@ const TheCatalog = defineAsyncComponent(
   () => import('@/components/blocks/TheCatalog.vue'),
 );
 
-const list = ref({});
+const list = ref({} as SearchResponse);
 const searchName = ref('');
 
 const route = useRoute();
