@@ -5,7 +5,7 @@ export interface Anime {
   title: string;
   episodes: number;
   status: string;
-  synopsis: string;
+  synopsis?: string;
   background?: string;
   genres?: Array<AnimeGenre>;
   images: AnimeImages;

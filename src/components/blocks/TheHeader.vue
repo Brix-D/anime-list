@@ -2,6 +2,7 @@
   <div>
     <header class="flex justify-between py-6 items-center">
       <h1 class="text-2xl">Anime Search</h1>
+      <SearchBar />
       <div class="">
         <USwitch
           :value="isDark"
@@ -17,6 +18,7 @@
 </template>
 
 <script setup lang="ts">
+import SearchBar from '@/components/blocks/Search.vue';
 import USwitch from '@/components/ui/USwitch.vue';
 import useDarkTheme from '@/composables/useDarkTheme';
 const { isDark, toggleTheme } = useDarkTheme();
