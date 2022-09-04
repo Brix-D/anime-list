@@ -42,6 +42,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import type AnimeGenre from "@/components/types/AnimeGenre";
 
 interface Anime {
   mal_id: number;
@@ -50,7 +51,7 @@ interface Anime {
   status: string;
   synopsis: string;
   background?: string;
-  genres?: Array<object>;
+  genres?: Array<AnimeGenre>;
   images: AnimeImages;
   year?: number;
   url: string;
