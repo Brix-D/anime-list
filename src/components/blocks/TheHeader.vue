@@ -2,7 +2,7 @@
   <div>
     <header class="flex justify-between py-6 items-center">
       <h1 class="text-2xl">Anime Search</h1>
-      <SearchBar />
+      <SearchBar v-if="!checkMobile()"/>
       <div class="">
         <USwitch
           :value="isDark"
@@ -21,6 +21,8 @@
 import SearchBar from '@/components/blocks/Search.vue';
 import USwitch from '@/components/ui/USwitch.vue';
 import useDarkTheme from '@/composables/useDarkTheme';
+import { checkMobile } from '@/utils';
+
 const { isDark, toggleTheme } = useDarkTheme();
 </script>
 
