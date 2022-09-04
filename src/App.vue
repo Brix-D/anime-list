@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { onMounted, defineAsyncComponent } from 'vue';
+import useDarkTheme from '@/composables/useDarkTheme';
 
 const TheHeader = defineAsyncComponent(
   () => import('@/components/blocks/TheHeader.vue'),
 );
-import useDarkTheme from '@/composables/useDarkTheme';
+
 const { setTheme, userTheme } = useDarkTheme();
 
 onMounted(() => {
